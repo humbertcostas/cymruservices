@@ -1,8 +1,8 @@
-b22fd867324742c047959ffc6785efbc *DESCRIPTION
+e87398288c8376121d22b9f9f23cecb9 *DESCRIPTION
 70c52d4fddc047796739d5cd734b706b *LICENSE
 5899f1cccec19ef46b6298a5894f612b *NAMESPACE
 68fc93e8176db479fed84e7c3fa23ce4 *R/asn.R
-7786397e9fbba627ddcaaeca39beaf7a *R/bogons.R
+6d502ba8202423044baba03f2ae8f01e *R/bogons.R
 c724fabf76750d5c869f234ed162c9a0 *R/cymruservices-package.r
 2887640ea6f9434c5ed0dbac66ab8093 *R/malwarehash.R
 d36b5255a96ceb5d87eeb905e6fa6b8f *R/utils.R
@@ -10,8 +10,8 @@ cc09f3cc4973a8420cd1253d55dea157 *man/bulk_origin.Rd
 ab93b30acf266b22ebd376e13664401b *man/bulk_origin_asn.Rd
 4d7c066d23c3841eed8985c8f3a4f042 *man/bulk_peer.Rd
 33b82beee985f7baf8ebe614e8ef8a63 *man/cymruservices.Rd
-e0c64d1cf29bfd3292c61918ebdff4d3 *man/ipv4_bogons.Rd
-ae5d83887f857cf8bf002f2661de09c0 *man/ipv6_bogons.Rd
+5dd52b861cd9c21c955bb13ea56acd4f *man/ipv4_bogons.Rd
+acbef4df83a340bc5342bb6755fac8a0 *man/ipv6_bogons.Rd
 72b9d39eb223b32ebeec66b5cf80cb44 *man/malware_hash.Rd
 189cff8619d97c2ba2b0dbaa90423c1e *tests/testthat.R
 76212c18f523d9e425775668ae1e19ad *tests/testthat/test-cymruservices.R

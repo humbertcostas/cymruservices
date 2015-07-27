@@ -4,7 +4,7 @@
 \alias{ipv4_bogons}
 \title{Retrieve list of IPv4 "full bogons" from Team Cymru webservice}
 \usage{
-ipv4_bogons(force = FALSE, cached_bogons = NA)
+ipv4_bogons(force = FALSE, cached_bogons = NA_character_)
 }
 \arguments{
 \item{force}{force a refresh even if the time-frame (4-hours) is not up}

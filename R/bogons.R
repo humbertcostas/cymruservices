@@ -23,16 +23,27 @@
 #' @examples
 #' v4_bogons <- ipv4_bogons()
 #' v4_bogons <- ipv4_bogons(cached_bogons=v4_bogons)
-ipv4_bogons <- function(force=FALSE, cached_bogons=NA) {
+ipv4_bogons <- function(force=FALSE, cached_bogons=NA_character_) {
+  bogons <- NA_character_
   if (Sys.getenv("CYMRU_LAST_V4_BOGON") == "") {
-    bogons <- readLines("http://www.team-cymru.org/Services/Bogons/fullbogons-ipv4.txt")
+    tryCatch(
+      bogons <- readLines("http://www.team-cymru.org/Services/Bogons/fullbogons-ipv4.txt"),
+      error=function(e) {message("Error reported by Team Cymru service. Will return cached bogons.")},
+      warning=function(e) {message("Error reported by Team Cymru service. Will return cached bogons.")}
+    )
+    if (any(is.na(bogons))) return(cached_bogons)
     last_updated <- as.numeric(str_match_all(bogons[1], "updated ([[:digit:]]+) ")[[1]][,2])
     Sys.setenv(CYMRU_LAST_V4_BOGON=last_updated)
     return(tail(bogons, -1))
   } else {
     delta <- (as.numeric(Sys.time()) - as.numeric(Sys.getenv("CYMRU_LAST_V4_BOGON")))
     if ((delta > 14400) | ((delta < 14400) & force)) {
-      bogons <- readLines("http://www.team-cymru.org/Services/Bogons/fullbogons-ipv4.txt")
+      tryCatch(
+        bogons <- readLines("http://www.team-cymru.org/Services/Bogons/fullbogons-ipv4.txt"),
+        error=function(e) {message("Error reported by Team Cymru service. Will return cached bogons.")},
+        warning=function(e) {message("Error reported by Team Cymru service. Will return cached bogons.")}
+      )
+      if (any(is.na(bogons))) return(cached_bogons)
       last_updated <- as.numeric(str_match_all(bogons[1], "updated ([[:digit:]]+) ")[[1]][,2])
       Sys.setenv(CYMRU_LAST_V4_BOGON=last_updated)
       return(tail(bogons, -1))
@@ -68,16 +79,27 @@ ipv4_bogons <- function(force=FALSE, cached_bogons=NA) {
 #' @examples
 #' v6_bogons <- ipv6_bogons()
 #' v6_bogons <- ipv6_bogons(cached_bogons=v6_bogons)
-ipv6_bogons <- function(force=FALSE, cached_bogons=NA) {
+ipv6_bogons <- function(force=FALSE, cached_bogons=NA_character_) {
+  bogons <- NA_character_
   if (Sys.getenv("CYMRU_LAST_V6_BOGON") == "") {
-    bogons <- readLines("http://www.team-cymru.org/Services/Bogons/fullbogons-ipv6.txt")
+    tryCatch(
+      bogons <- readLines("http://www.team-cymru.org/Services/Bogons/fullbogons-ipv6.txt"),
+      error=function(e) {message("Error reported by Team Cymru service. Will return cached bogons.")},
+      warning=function(e) {message("Error reported by Team Cymru service. Will return cached bogons.")}
+    )
+    if (any(is.na(bogons))) return(cached_bogons)
     last_updated <- as.numeric(str_match_all(bogons[1], "updated ([[:digit:]]+) ")[[1]][,2])
     Sys.setenv(CYMRU_LAST_V6_BOGON=last_updated)
     return(tail(bogons, -1))
   } else {
     delta <- (as.numeric(Sys.time()) - as.numeric(Sys.getenv("CYMRU_LAST_V6_BOGON")))
     if ((delta > 14400) | ((delta < 14400) & force)) {
-      bogons <- readLines("http://www.team-cymru.org/Services/Bogons/fullbogons-ipv6.txt")
+      tryCatch(
+        bogons <- readLines("http://www.team-cymru.org/Services/Bogons/fullbogons-ipv6.txt"),
+        error=function(e) {message("Error reported by Team Cymru service. Will return cached bogons.")},
+        warning=function(e) {message("Error reported by Team Cymru service. Will return cached bogons.")}
+      )
+      if (any(is.na(bogons))) return(cached_bogons)
       last_updated <- as.numeric(str_match_all(bogons[1], "updated ([[:digit:]]+) ")[[1]][,2])
       Sys.setenv(CYMRU_LAST_V6_BOGON=last_updated)
       return(tail(bogons, -1))
